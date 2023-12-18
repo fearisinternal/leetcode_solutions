@@ -1,30 +1,27 @@
-#include <iostream>
-
-struct TreeNode
-{
-    int val;
-    TreeNode *left;
-    TreeNode *right;
-    TreeNode() : val(0), left(nullptr), right(nullptr) {}
-    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
-    TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
-};
-int rangeSumBST(TreeNode *root, int low, int high)
-{
-    int sum = 0;
-    if (root != nullptr)
-    {
-        if (root->val >= low && root->val <= high)
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+class Solution {
+public:
+    int rangeSumBST(TreeNode* root, int low, int high) {
+        int sum = 0;
+        if (root != nullptr)
         {
-            sum += root->val;
+            if (root->val >= low && root->val <= high)
+            {
+                sum += root->val;
+            }
+            sum += rangeSumBST(root->left, low, high);
+            sum += rangeSumBST(root->right, low, high);
         }
-        sum += rangeSumBST(root->left, low, high);
-        sum += rangeSumBST(root->right, low, high);
+        return sum;
     }
-    return sum;
-}
-
-int main()
-{
-    return 0;
-}
+};
