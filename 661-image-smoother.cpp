@@ -1,4 +1,5 @@
-class Solution {
+class Solution
+{
 public:
     int isExist(std::vector<std::vector<int>> &img, int i, int j, int &point)
     {
@@ -19,7 +20,7 @@ public:
             {
                 int count = 1;
                 ans[i][j] = img[i][j];
-                count += isExist(img, i-1, j - 1, ans[i][j]);
+                count += isExist(img, i - 1, j - 1, ans[i][j]);
                 count += isExist(img, i - 1, j, ans[i][j]);
                 count += isExist(img, i - 1, j + 1, ans[i][j]);
                 count += isExist(img, i, j - 1, ans[i][j]);
@@ -27,9 +28,9 @@ public:
                 count += isExist(img, i + 1, j - 1, ans[i][j]);
                 count += isExist(img, i + 1, j, ans[i][j]);
                 count += isExist(img, i + 1, j + 1, ans[i][j]);
-                ans[i][j]/=count;
+                ans[i][j] /= count;
             }
         }
         return ans;
     }
-};о
+};

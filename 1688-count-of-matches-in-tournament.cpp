@@ -1,26 +1,22 @@
-#include <iostream>
-
-int numberOfMatches(int n)
+class Solution
 {
-    int count = 0;
-    while (n > 1)
+public:
+    int numberOfMatches(int n)
     {
-        if (n % 2)
+        int count = 0;
+        while (n > 1)
         {
-            count += (n - 1) / 2;
-            n = (n - 1) / 2 + 1;
+            if (n % 2)
+            {
+                count += (n - 1) / 2;
+                n = (n - 1) / 2 + 1;
+            }
+            else
+            {
+                count += n / 2;
+                n /= 2;
+            }
         }
-        else
-        {
-            count += n / 2;
-            n /= 2;
-        }
+        return count;
     }
-    return count;
-}
-
-int main()
-{
-    int n = 1;
-    std::cout << numberOfMatches(n) << std::endl;
-}
+};

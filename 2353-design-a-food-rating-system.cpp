@@ -1,9 +1,3 @@
-#include <iostream>
-#include <vector>
-#include <string>
-#include <unordered_map>
-#include <set>
-
 class FoodRatings
 {
 private:
@@ -36,21 +30,3 @@ public:
         return cuisineToFood[cuisine].begin()->second;
     }
 };
-
-int main()
-{
-    std::vector<std::string> foods = {"kimchi", "miso", "sushi", "moussaka", "ramen", "bulgogi"};
-    std::vector<std::string> cuisines = {"korean", "japanese", "japanese", "greek", "japanese", "korean"};
-    std::vector<int> ratings = {9, 12, 8, 15, 14, 7};
-    FoodRatings foodRatings = FoodRatings(foods, cuisines, ratings);
-    std::cout << foodRatings.highestRated("korean") << std::endl;   // return "kimchi"
-                                                                    // "kimchi" is the highest rated korean food with a rating of 9.
-    std::cout << foodRatings.highestRated("japanese") << std::endl; // return "ramen"
-                                                                    // "ramen" is the highest rated japanese food with a rating of 14.
-    foodRatings.changeRating("sushi", 16);                          // "sushi" now has a rating of 16.
-    std::cout << foodRatings.highestRated("japanese") << std::endl; // return "sushi"
-                                                                    // "sushi" is the highest rated japanese food with a rating of 16.
-    foodRatings.changeRating("ramen", 16);                          // "ramen" now has a rating of 16.
-    std::cout << foodRatings.highestRated("japanese") << std::endl; // return "ramen"
-    return 0;
-}
